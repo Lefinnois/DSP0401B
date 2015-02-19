@@ -1,0 +1,26 @@
+#######################################
+# Syntax Coloring Map For DSP0401B
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+DSP0401B	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+begin		KEYWORD2
+brightness	KEYWORD2
+clear		KEYWORD2
+sendtext	KEYWORD2
+slidetext	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+
+
