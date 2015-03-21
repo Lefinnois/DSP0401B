@@ -1,3 +1,13 @@
+/*
+ *  Copyright (C) 2015 Denis Bodor
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 as
+ * published by the Free Software Foundation.
+ *
+ */
+
+
 #include "DSP0401B.h"
 
 DSP0401B::DSP0401B() {
