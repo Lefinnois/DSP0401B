@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2015 Denis Bodor
+ * Copyright (C) 2015 Denis Bodor
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as
@@ -13,7 +13,7 @@
 DSP0401B::DSP0401B() {
 }
 
-void DSP0401B::begin(unsigned int num_disp, unsigned int sdi_pin, 
+void DSP0401B::begin(unsigned int num_disp, unsigned int sdi_pin,
 		unsigned int clk_pin, unsigned int le_pin, unsigned int oe_pin) {
 
 	SDI = sdi_pin;
@@ -89,4 +89,14 @@ void DSP0401B::slidetext(String text, unsigned long pause) {
 		latch_pulse();
 		delay(pause);
 	}
+}
+
+void DSP0401B::sendpattern(int num, ...) {
+	va_list arguments;
+	va_start (arguments, num);
+	for (int x = 0; x<num; x++) {
+		shift(va_arg(arguments, unsigned int));
+	}
+	va_end(arguments);
+	latch_pulse();
 }

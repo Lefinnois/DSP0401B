@@ -10,7 +10,7 @@
 #define SEG_F 0x0200
 #define SEG_G 0x0800
 #define SEG_H 0x0010
-#define SEG_I 0x0100
+#define SEG_I 0x1000
 #define SEG_J 0x0008
 #define SEG_K 0x0002
 #define SEG_L 0x0001
@@ -19,18 +19,39 @@
 #define SEG_O 0x0004
 #define SEG_P 0x8000
 
+/*
+ Segments (from DSP-0401B Datasheet : http://www.embeddedadventures.com/datasheets/DSP-0401B_hw_v4.pdf)
+
+  --A-- --B--
+ |\    |    /|
+ | \   |   / |
+ C  D  E  F  G
+ |   \ | /   |
+ |    \|/    |
+  --H-- --I--
+ |    /|\    |
+ |   / | \   |
+ J  K  L  M  N
+ | /   |   \ |
+ |/    |    \|
+  --O-- --P--
+*/
+
+
+
 #include "Arduino.h"
 #include "charmap.h"
 
 class DSP0401B {
 	public:
 		DSP0401B();
-		void begin(unsigned int num_disp, unsigned int sdi_pin, 
+		void begin(unsigned int num_disp, unsigned int sdi_pin,
 				unsigned int clk_pin, unsigned int le_pin, unsigned int oe_pin);
 		void brightness(unsigned char brightlvl);
 		void clear();
 		void sendtext(String text);
 		void slidetext(String text, unsigned long pause);
+		void sendpattern(int num, ...);
 
 	private:
 		void shiftcharmap(uint8_t idx);
@@ -41,7 +62,6 @@ class DSP0401B {
 		unsigned int LE;
 		unsigned int OE;
 		unsigned int NUM;
-		
 };
 
 #endif
